@@ -74,16 +74,69 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Устанавливаем высокое значение z-index, чтобы экран был поверх всех элементов */
 }
 
+#loading-container {
+    position: relative;
+    text-align: center;
+}
+
 #loading-screen img {
-    max-width: 80%;
-    max-height: 80%;
+    width: 100vw; /* Растягиваем изображение на всю ширину экрана */
+    height: 100vh; /* Растягиваем изображение на всю высоту экрана */
+    object-fit: cover; /* Обрезаем изображение, чтобы оно заполнило экран */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Помещаем изображение под контент */
+}
+
+#loading-bar-container {
+    position: absolute;
+    bottom: 30px; /* Позиционируем загрузочный бар чуть выше нижнего края экрана */
+    left: 50%;
+    transform: translateX(-50%); /* Центрируем контейнер по горизонтали */
+    width: 80%; /* Делаем ширину контейнера 80% экрана */
+}
+
+#loading-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#loading-progress {
+    height: 100%;
+    background-color: #000000;
+    width: 0; /* Начальная ширина прогресса */
+    transition: width 0.3s ease; /* Плавное изменение ширины */
+}
+
+#loading-ring {
+    border: 8px solid #ddd;
+    border-top: 8px solid #000000;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 20px auto;
+    animation: spin 2s linear infinite; /* Анимация вращения кольца */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading-text {
+    font-size: 24px;
+    color: #000000;
+    margin-top: 20px;
 }
 
 #money-container {
