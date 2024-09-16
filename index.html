@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tap Game</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tap Game</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
 <body>
     <!-- Экран загрузки -->
     <div id="loading-screen">
-        <img src="Loading.jpg" alt="Loading">
+        <div id="loading-container">
+            <img src="Loading.jpg" alt="Loading">
+            <div id="loading-bar-container">
+                <div id="loading-bar">
+                    <div id="loading-progress"></div>
+                </div>
+                <div id="loading-ring"></div>
+                <p id="loading-text">Loading...</p>
+            </div>
+        </div>
     </div>
 
     <div id="game" style="display: none;">
