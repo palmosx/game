@@ -35,10 +35,33 @@ const levelNames = [
     "Chosen One"           // Level 10
 ];
 
-// Показываем экран загрузки
+// Показываем экран загрузки и обновляем прогресс
 window.onload = function () {
-    // Устанавливаем таймер для 10 секунд
+    // Прогресс заполнения бара
+    let progress = 0;
+    const loadingProgress = document.getElementById('loading-progress');
+
+    // Обновляем прогресс каждые 500 мс
+    const progressInterval = setInterval(() => {
+        // Увеличиваем прогресс случайным образом от 5 до 15 процентов
+        progress += Math.floor(Math.random() * 10) + 5;
+        
+        // Ограничиваем прогресс до 100%
+        if (progress > 100) progress = 100;
+
+        // Обновляем ширину прогресса
+        loadingProgress.style.width = progress + '%';
+
+        // Если достигли 100%, завершаем
+        if (progress >= 100) {
+            clearInterval(progressInterval);
+            hideLoadingScreen();
+        }
+    }, 500);
+
+    // Принудительно скрываем загрузку через 10 секунд
     setTimeout(() => {
+        clearInterval(progressInterval);
         hideLoadingScreen();
     }, 10000);
 };
@@ -52,6 +75,7 @@ function hideLoadingScreen() {
     const gameScreen = document.getElementById('game');
     gameScreen.style.display = 'block';
 }
+
 // Уровни и необходимое количество монет для их достижения
 const levels = [
     10000,       // Level 1
